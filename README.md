@@ -1,457 +1,424 @@
 
- 
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <meta name="theme-color" content="#667eea" />
-  <title>Login - B25 CHEATS</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #667eea;
-      --secondary: #764ba2;
-      --success: #27ae60;
-      --error: #e74c3c;
-      --text: #1a1a1a;
-      --text-light: #666;
-      --bg: #f8f9fa;
-      --white: #ffffff;
-    }
-
-    body {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-      padding: 20px;
-    }
-
-    .container {
-      background: var(--white);
-      border-radius: 24px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-      max-width: 480px;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 40px 30px;
-      text-align: center;
-      color: white;
-    }
-
-    .header i {
-      font-size: 3rem;
-      margin-bottom: 12px;
-    }
-
-    .header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .tabs {
-      display: flex;
-      background: var(--bg);
-      padding: 8px;
-    }
-
-    .tab {
-      flex: 1;
-      padding: 14px;
-      text-align: center;
-      background: transparent;
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      color: var(--text-light);
-    }
-
-    .tab.active {
-      background: white;
-      color: var(--primary);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .form-container {
-      padding: 32px 30px;
-    }
-
-    .form-content {
-      display: none;
-    }
-
-    .form-content.active {
-      display: block;
-      animation: fadeIn 0.4s;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    .input-wrapper {
-      position: relative;
-    }
-
-    .input-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
-      pointer-events: none;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 14px 16px 14px 44px;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      font-size: 1rem;
-      transition: all 0.3s;
-      outline: none;
-      background: var(--bg);
-    }
-
-    .form-group input:focus {
-      border-color: var(--primary);
-      background: white;
-      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-    }
-
-    .btn {
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-top: 10px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--success), #229954);
-      color: white;
-      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary.loading {
-      color: transparent;
-      position: relative;
-    }
-
-    .btn-primary.loading::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 50%;
-      left: 50%;
-      margin-left: -10px;
-      margin-top: -10px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .message {
-      padding: 14px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      display: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .message.show {
-      display: block;
-      animation: slideDown 0.4s;
-    }
-
-    .message.error {
-      background: linear-gradient(135deg, #fee, #fdd);
-      color: var(--error);
-      border: 2px solid #fcc;
-    }
-
-    .message.success {
-      background: linear-gradient(135deg, #d4edda, #c3e6cb);
-      color: #155724;
-      border: 2px solid #c3e6cb;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 10px;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 2px solid #f0f0f0;
-    }
-
-    .social-link {
-      flex: 1;
-      padding: 12px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      text-align: center;
-      font-size: 0.85rem;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .social-link.discord {
-      background: linear-gradient(135deg, #5865f2, #4752c4);
-    }
-
-    .social-link.telegram {
-      background: linear-gradient(135deg, #0088cc, #006699);
-    }
-
-    .social-link.youtube {
-      background: linear-gradient(135deg, #ff0000, #cc0000);
-    }
-
-    .countdown {
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-top: 12px;
-    }
-
-    .countdown span {
-      color: var(--error);
-      font-weight: 700;
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        border-radius: 20px;
-      }
-
-      .social-links {
-        flex-direction: column;
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>B25 CHEATS — Demo (Safe Simulation)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg1:#071324; --bg2:#0b1b2b; --card:#071b2a;
+    --accent:#4f46e5; --accent2:#8b5cf6;
+    --muted:#98a8b8; --ok:#22c55e; --err:#ef4444; --white:#fff;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;background:
+    radial-gradient(600px 300px at 10% 10%, rgba(79,70,229,0.12), transparent),
+    linear-gradient(180deg,var(--bg1),var(--bg2)); color:var(--white);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:28px auto;padding:18px;display:grid;grid-template-columns:360px 1fr;gap:18px}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+  /* left column: auth + profile */
+  .left .brand{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+  .shield{width:54px;height:54;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 8px 30px rgba(79,70,229,0.14)}
+  h1{font-size:18px;margin:0}
+  p.muted{color:var(--muted);font-size:13px;margin-top:6px}
+  .tabs{display:flex;gap:8px;margin:12px 0}
+  .tab{flex:1;padding:10px;border-radius:10px;text-align:center;cursor:pointer;background:rgba(255,255,255,0.02);font-weight:700;color:var(--muted)}
+  .tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;box-shadow:0 8px 20px rgba(79,70,229,0.12)}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  input.input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);outline:none}
+  .btn{width:100%;padding:10px;border-radius:10px;border:0;font-weight:800;cursor:pointer;margin-top:8px}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--white)}
+  .note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+  .message{display:none;padding:10px;border-radius:8px;margin:8px 0;font-weight:700;text-align:center}
+  .message.error{display:block;background:rgba(239,68,68,0.08);color:var(--err);border:1px solid rgba(239,68,68,0.14)}
+  .message.success{display:block;background:rgba(34,197,94,0.08);color:var(--ok);border:1px solid rgba(34,197,94,0.12)}
+  /* right column: dashboard & simulated overlay */
+  .controls{display:flex;gap:12px;margin-bottom:12px;align-items:center}
+  .big-card{padding:18px;border-radius:12px}
+  .status-row{display:flex;gap:12px;align-items:center}
+  .status-pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;color:var(--muted)}
+  .status-pill.ok{background:rgba(34,197,94,0.12);color:var(--ok)}
+  .status-pill.off{background:rgba(239,68,68,0.08);color:var(--err)}
+  .panel-grid{display:grid;grid-template-columns:1fr 360px;gap:12px}
+  .log{height:220px;overflow:auto;background:rgba(0,0,0,0.25);padding:12px;border-radius:10px;font-family:monospace;font-size:13px}
+  .progress{height:12px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;margin-top:8px}
+  .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%}
+  .feature-list{display:flex;flex-direction:column;gap:8px}
+  .feature{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02)}
+  .feature input[type=checkbox]{transform:scale(1.25)}
+  /* draggable in-game overlay (simulated) */
+  .overlay{
+    position:fixed; right:20px; bottom:20px; width:320px; max-width:80%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:10px;padding:10px;box-shadow:0 20px 60px rgba(2,6,23,0.6);z-index:9999;
+    cursor:move;
+  }
+  .overlay .head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .overlay h4{margin:0;font-size:14px}
+  .overlay .mini-log{height:100px;overflow:auto;font-family:monospace;font-size:12px;padding-top:8px}
+  .overlay.hidden{display:none}
+  /* small screens */
+  @media (max-width:980px){ .wrap{grid-template-columns:1fr; padding:12px} .panel-grid{grid-template-columns:1fr} .overlay{right:10px;left:10px;width:auto} }
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <i class="fas fa-shield-alt"></i>
-      <h1>B25 CHEATS</h1>
-      <p>Secure Access Portal</p>
-    </div>
-
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab('login', event)">
-        <i class="fas fa-sign-in-alt"></i> Login
-      </button>
-      <button class="tab" onclick="switchTab('register', event)">
-        <i class="fas fa-user-plus"></i> Register
-      </button>
-    </div>
-
-    <div class="form-container">
-      <!-- Login -->
-      <div class="form-content active" id="login-form">
-        <div id="login-message" class="message"></div>
-        <form onsubmit="handleLogin(event)">
-          <div class="form-group">
-            <label><i class="fas fa-user"></i> Username or Email</label>
-            <div class="input-wrapper">
-              <i class="fas fa-user input-icon"></i>
-              <input type="text" id="login-identifier" placeholder="Enter username or email" required />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-lock"></i> Password</label>
-            <div class="input-wrapper">
-              <i class="fas fa-lock input-icon"></i>
-              <input type="password" id="login-password" placeholder="Enter password" required />
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary" id="login-btn">
-            <i class="fas fa-sign-in-alt"></i> Login
-          </button>
-        </form>
-
-        <div class="social-links">
-          <a href="https://discord.gg/7PG6MF9wCN" class="social-link discord"><i class="fab fa-discord"></i><span>Discord</span></a>
-          <a href="https://t.me/b25cheats" class="social-link telegram"><i class="fab fa-telegram-plane"></i><span>Telegram</span></a>
-          <a href="https://www.youtube.com/@b25-cheats" class="social-link youtube"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+  <div class="wrap">
+    <!-- LEFT: Auth -->
+    <div class="card left">
+      <div class="brand">
+        <div class="shield"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <h1>B25 CHEATS — Demo</h1>
+          <div style="font-size:13px;color:var(--muted)">Safe simulation only — কোনো বাস্তব চিট নয়</div>
         </div>
       </div>
 
-      <!-- Register -->
-      <div class="form-content" id="register-form">
-        <div id="register-message" class="message"></div>
-        <form onsubmit="handleRegister(event)">
-          <div class="form-group">
-            <label><i class="fas fa-user"></i> Username (min 6 characters)</label>
-            <div class="input-wrapper">
-              <i class="fas fa-user input-icon"></i>
-              <input type="text" id="register-username" minlength="6" required />
-            </div>
+      <div class="tabs" role="tablist">
+        <div class="tab active" data-tab="login" onclick="switchAuth(event)">Login</div>
+        <div class="tab" data-tab="register" onclick="switchAuth(event)">Register</div>
+      </div>
+
+      <!-- login form -->
+      <div id="login-box">
+        <div id="login-msg" class="message"></div>
+        <label for="l-identifier">Username or Email</label>
+        <input id="l-identifier" class="input" placeholder="username or email">
+        <label for="l-password" style="margin-top:8px">Password</label>
+        <input id="l-password" class="input" type="password" placeholder="password">
+        <button class="btn primary" onclick="doLogin()">Login</button>
+        <button class="btn ghost" onclick="fillDemo()">Use demo account</button>
+        <div class="note">এই ডেমোতে ডাটা লোকালি ব্রাউজারে সংরক্ষিত হয় (localStorage)</div>
+      </div>
+
+      <!-- register form -->
+      <div id="register-box" style="display:none">
+        <div id="register-msg" class="message"></div>
+        <label for="r-username">Username (min 6)</label>
+        <input id="r-username" class="input" placeholder="username">
+        <label for="r-email" style="margin-top:8px">Gmail Address</label>
+        <input id="r-email" class="input" placeholder="your.email@gmail.com">
+        <label for="r-pass" style="margin-top:8px">Password</label>
+        <input id="r-pass" class="input" type="password" placeholder="password">
+        <label for="r-passc" style="margin-top:8px">Confirm Password</label>
+        <input id="r-passc" class="input" type="password" placeholder="confirm">
+        <button class="btn primary" onclick="doRegister()">Register</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Dashboard -->
+    <div class="card big-card">
+      <div class="controls">
+        <div style="flex:1">
+          <div style="font-weight:800;font-size:14px">Dashboard</div>
+          <div style="color:var(--muted);font-size:13px">Login হলে আপনি এখানে সিমুলেশন কন্ট্রোল দেখতে পাবেন</div>
+        </div>
+        <div class="status-row">
+          <div id="connect-pill" class="status-pill off">Not Connected</div>
+        </div>
+      </div>
+
+      <div class="panel-grid">
+        <div>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+            <button id="inject-btn" class="btn primary" onclick="startInject()" disabled><i class="fas fa-bolt"></i> Inject (Simulated)</button>
+            <button class="btn ghost" onclick="toggleOverlay()" id="overlay-toggle" disabled><i class="fas fa-window-maximize"></i> Toggle Overlay</button>
           </div>
 
-          <div class="form-group">
-            <label><i class="fas fa-envelope"></i> Gmail Address</label>
-            <div class="input-wrapper">
-              <i class="fas fa-envelope input-icon"></i>
-              <input type="email" id="register-email" placeholder="your.email@gmail.com" required />
-            </div>
+          <div class="feature-list">
+            <div class="feature"><div>ESP (Enemy Info)</div><div><input id="f-esp" type="checkbox" disabled></div></div>
+            <div class="feature"><div>Aimbot</div><div><input id="f-aim" type="checkbox" disabled></div></div>
+            <div class="feature"><div>Wallhack</div><div><input id="f-wall" type="checkbox" disabled></div></div>
+            <div class="feature"><div>Speed</div><div><input id="f-speed" type="checkbox" disabled></div></div>
           </div>
 
-          <div class="form-group">
-            <label><i class="fas fa-lock"></i> Password</label>
-            <div class="input-wrapper">
-              <i class="fas fa-lock input-icon"></i>
-              <input type="password" id="register-password" required />
-            </div>
+          <div style="margin-top:12px">
+            <div style="font-weight:800;margin-bottom:6px">Actions & Logs</div>
+            <div id="log" class="log" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-weight:800;margin-bottom:8px">System Status</div>
+          <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">
+            <div>Process: <span id="proc-name">—</span></div>
+            <div style="margin-top:6px">Memory: <span id="proc-mem">—</span></div>
+            <div style="margin-top:8px">Progress</div>
+            <div class="progress"><i id="progress-bar"></i></div>
+            <div style="margin-top:10px;color:var(--muted);font-size:13px">এইসব তথ্য কেবল সিমুলেটেড; বাস্তব প্রক্রিয়া দেখা/পরিবর্তন করে না।</div>
           </div>
 
-          <div class="form-group">
-            <label><i class="fas fa-lock"></i> Confirm Password</label>
-            <div class="input-wrapper">
-              <i class="fas fa-lock input-icon"></i>
-              <input type="password" id="register-password-confirm" required />
-            </div>
+          <div style="margin-top:12px">
+            <button class="btn ghost" onclick="clearLogs()">Clear Logs</button>
+            <button class="btn ghost" style="margin-top:8px" onclick="resetDemo()">Reset Demo</button>
           </div>
-
-          <button type="submit" class="btn btn-primary" id="register-btn">
-            <i class="fas fa-user-plus"></i> Register
-          </button>
-
-          <div id="countdown" class="countdown" style="display:none;">
-            Please wait <span id="countdown-timer">10</span> seconds...
-          </div>
-        </form>
-
-        <div class="social-links">
-          <a href="https://discord.gg/7PG6MF9wCN" class="social-link discord"><i class="fab fa-discord"></i><span>Discord</span></a>
-          <a href="https://t.me/b25cheats" class="social-link telegram"><i class="fab fa-telegram-plane"></i><span>Telegram</span></a>
-          <a href="https://www.youtube.com/@b25-cheats" class="social-link youtube"><i class="fab fa-youtube"></i><span>YouTube</span></a>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
-    function switchTab(tab, event) {
-      document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-      document.querySelectorAll('.form-content').forEach((f) => f.classList.remove('active'));
-      document.getElementById(tab + '-form').classList.add('active');
+  <!-- Simulated draggable overlay -->
+  <div id="overlay" class="overlay hidden" aria-hidden="true">
+    <div class="head">
+      <h4>In-Game Overlay</h4>
+      <div style="display:flex;gap:6px;align-items:center">
+        <button class="btn ghost" style="padding:6px 8px;font-size:12px" onclick="toggleOverlay()">Close</button>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted)">Live logs (simulated)</div>
+    <div id="overlay-log" class="mini-log"></div>
+  </div>
+
+<script>
+/* ---------------------
+   Simple localStorage mock "auth"
+   --------------------- */
+const LS_USERS_KEY = 'demo_users_v1';
+const LS_SESSION = 'demo_session_v1';
+
+// helper: load users (object username -> {email, pass})
+function loadUsers(){
+  try{ return JSON.parse(localStorage.getItem(LS_USERS_KEY) || '{}') } catch(e){ return {} }
+}
+function saveUsers(u){ localStorage.setItem(LS_USERS_KEY, JSON.stringify(u)) }
+
+function setSession(username){ localStorage.setItem(LS_SESSION, username); updateUIForAuth() }
+function getSession(){ return localStorage.getItem(LS_SESSION) }
+function clearSession(){ localStorage.removeItem(LS_SESSION); updateUIForAuth() }
+
+/* UI switching for login/register */
+function switchAuth(e){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  const tab = e.currentTarget.dataset.tab;
+  document.getElementById('login-box').style.display = tab==='login' ? '' : 'none';
+  document.getElementById('register-box').style.display = tab==='register' ? '' : 'none';
+  // clear messages
+  document.getElementById('login-msg').className='message';
+  document.getElementById('register-msg').className='message';
+}
+
+/* register */
+function doRegister(){
+  const u = document.getElementById('r-username').value.trim();
+  const email = document.getElementById('r-email').value.trim().toLowerCase();
+  const p = document.getElementById('r-pass').value;
+  const pc = document.getElementById('r-passc').value;
+
+  if(u.length < 6){ showMsg('register','Username must be at least 6 characters','error'); return }
+  if(!email.endsWith('@gmail.com')){ showMsg('register','Please use a Gmail address (@gmail.com)','error'); return }
+  if(p.length < 6){ showMsg('register','Password must be at least 6 characters','error'); return }
+  if(p !== pc){ showMsg('register','Passwords do not match','error'); return }
+
+  const users = loadUsers();
+  if(users[u]){ showMsg('register','Username already taken','error'); return }
+
+  users[u] = { email, pass: p, created: new Date().toISOString() };
+  saveUsers(users);
+  showMsg('register','Registration successful — You can login now','success');
+
+  // clear inputs
+  document.getElementById('r-username').value='';
+  document.getElementById('r-email').value='';
+  document.getElementById('r-pass').value='';
+  document.getElementById('r-passc').value='';
+
+  // switch to login after 1s
+  setTimeout(()=> { document.querySelector('[data-tab="login"]').click(); }, 1000);
+}
+
+/* login */
+function doLogin(){
+  const id = document.getElementById('l-identifier').value.trim();
+  const p = document.getElementById('l-password').value;
+  if(!id || !p){ showMsg('login','Please fill in all fields','error'); return }
+
+  const users = loadUsers();
+  // check by username or email
+  let found = null;
+  for(const uname in users){
+    if(uname === id || users[uname].email === id) { found = { uname, ...users[uname] }; break }
+  }
+  if(!found){ showMsg('login','User not found','error'); return }
+  if(found.pass !== p){ showMsg('login','Incorrect password','error'); return }
+
+  // success
+  setSession(found.uname);
+  showMsg('login','Login successful — Welcome '+found.uname,'success');
+}
+
+/* demo helper */
+function fillDemo(){
+  // create demo account if not exists
+  const users = loadUsers();
+  if(!users['demo_user']){
+    users['demo_user'] = { email:'demo@gmail.com', pass:'demo123', created: new Date().toISOString() };
+    saveUsers(users);
+  }
+  document.getElementById('l-identifier').value = 'demo_user';
+  document.getElementById('l-password').value = 'demo123';
+  doLogin();
+}
+
+/* messages */
+function showMsg(area, msg, type='error'){
+  const el = document.getElementById(area+'-msg');
+  if(!el) return;
+  el.textContent = msg;
+  el.className = 'message ' + (type==='error' ? 'error' : 'success');
+  setTimeout(()=> { el.className = 'message'; }, 5500);
+}
+
+/* update UI depending on auth */
+function updateUIForAuth(){
+  const user = getSession();
+  const pill = document.getElementById('connect-pill');
+  const injectBtn = document.getElementById('inject-btn');
+  const overlayToggle = document.getElementById('overlay-toggle');
+  // features toggles
+  const features = ['f-esp','f-aim','f-wall','f-speed'];
+  if(user){
+    pill.textContent = 'Connected: '+user;
+    pill.className = 'status-pill ok';
+    injectBtn.disabled = false;
+    overlayToggle.disabled = false;
+    features.forEach(id=> document.getElementById(id).disabled = false);
+  } else {
+    pill.textContent = 'Not Connected';
+    pill.className = 'status-pill off';
+    injectBtn.disabled = true;
+    overlayToggle.disabled = true;
+    features.forEach(id=> { const el = document.getElementById(id); el.checked=false; el.disabled=true; });
+    hideOverlay();
+  }
+  // show process info
+  document.getElementById('proc-name').textContent = user ? 'game.exe (simulated)' : '—';
+  document.getElementById('proc-mem').textContent = user ? '245 MB (simulated)' : '—';
+}
+
+/* ---------------------
+   Simulated "Inject" flow
+   --------------------- */
+let injectInProgress = false;
+function startInject(){
+  if(injectInProgress) return;
+  injectInProgress = true;
+  log('Starting simulated injector...');
+  setProgress(0);
+  const steps = [
+    {t:800, msg:'Scanning game process...'},
+    {t:900, msg:'Bypassing integrity checks (simulated)...'},
+    {t:700, msg:'Allocating memory (simulated)...'},
+    {t:900, msg:'Patching modules (simulated)...'},
+    {t:700, msg:'Applying features: ESP, Aimbot, Wallhack...'},
+    {t:500, msg:'Finalizing...'}
+  ];
+  let acc = 0;
+  let total = steps.length;
+  (async function run(){
+    for(let i=0;i<steps.length;i++){
+      const s = steps[i];
+      log(s.msg);
+      await sleep(s.t);
+      acc++;
+      setProgress(Math.round((acc/total)*100));
     }
+    log('Injection complete — features active (simulated).');
+    injectInProgress = false;
+    // enable feature checkboxes as 'active'
+    ['f-esp','f-aim','f-wall','f-speed'].forEach(id=>{
+      document.getElementById(id).checked = true;
+    });
+    // also write to overlay log
+    overlayLog('Features enabled: ESP, Aimbot, Wallhack, Speed (simulated).');
+  })();
+}
 
-    function showMessage(formType, message, isError = true) {
-      const msgEl = document.getElementById(formType + '-message');
-      msgEl.textContent = message;
-      msgEl.className = 'message show ' + (isError ? 'error' : 'success');
-    }
+/* helpers: logging & progress */
+function log(msg){
+  const el = document.getElementById('log');
+  const time = new Date().toLocaleTimeString();
+  el.innerText = `[${time}] ${msg}\n` + el.innerText;
+}
+function overlayLog(msg){
+  const el = document.getElementById('overlay-log');
+  const time = new Date().toLocaleTimeString();
+  el.innerText = `[${time}] ${msg}\n` + el.innerText;
+}
+function setProgress(p){
+  document.getElementById('progress-bar').style.width = p+'%';
+}
 
-    function setLoading(btnId, isLoading) {
-      const btn = document.getElementById(btnId);
-      btn.disabled = isLoading;
-      btn.classList.toggle('loading', isLoading);
-    }
+/* simple sleep */
+function sleep(ms){ return new Promise(res=>setTimeout(res, ms)) }
 
-    async function handleLogin(e) {
-      e.preventDefault();
-      const id = document.getElementById('login-identifier').value.trim();
-      const pw = document.getElementById('login-password').value;
-      if (!id || !pw) return showMessage('login', 'Please fill in all fields');
-      setLoading('login-btn', true);
-      await new Promise((r) => setTimeout(r, 1000)); // simulate
-      showMessage('login', 'Login successful!', false);
-      setLoading('login-btn', false);
-    }
+/* clear logs */
+function clearLogs(){ document.getElementById('log').innerText=''; document.getElementById('overlay-log').innerText=''; }
 
-    async function handleRegister(e) {
-      e.preventDefault();
-      const u = document.getElementById('register-username').value.trim();
-      const eMail = document.getElementById('register-email').value.trim().toLowerCase();
-      const p1 = document.getElementById('register-password').value;
-      const p2 = document.getElementById('register-password-confirm').value;
+/* reset demo */
+function resetDemo(){
+  clearLogs();
+  setProgress(0);
+  ['f-esp','f-aim','f-wall','f-speed'].forEach(id=>{ const el=document.getElementById(id); el.checked=false; el.disabled=true; });
+  clearSession();
+  showMsg('login','Demo reset','success');
+}
 
-      if (u.length < 6) return showMessage('register', 'Username must be at least 6 characters');
-      if (!eMail.endsWith('@gmail.com')) return showMessage('register', 'Use Gmail only');
-      if (p1 !== p2) return showMessage('register', 'Passwords do not match');
-      if (p1.length < 6) return showMessage('register', 'Password too short');
+/* ---------------------
+   Overlay toggle & draggable behavior
+   --------------------- */
+function toggleOverlay(){
+  const ov = document.getElementById('overlay');
+  if(ov.classList.contains('hidden')){
+    ov.classList.remove('hidden');
+    ov.setAttribute('aria-hidden','false');
+  } else {
+    ov.classList.add('hidden');
+    ov.setAttribute('aria-hidden','true');
+  }
+}
 
-      const countdownEl = document.getElementById('countdown');
-      const timerEl = document.getElementById('countdown-timer');
-      countdownEl.style.display = 'block';
-      let s = 10;
-      const interval = setInterval(() => {
-        s--;
-        timerEl.textContent = s;
-        if (s <= 0) {
-          clearInterval(interval);
-          countdownEl.style.display = 'none';
-          showMessage('register', 'Registered successfully!', false);
-        }
-      }, 1000);
-    }
-  </script>
+/* hide overlay */
+function hideOverlay(){ const ov=document.getElementById('overlay'); ov.classList.add('hidden'); ov.setAttribute('aria-hidden','true') }
+
+/* simple drag for overlay */
+(function makeOverlayDraggable(){
+  const ov = document.getElementById('overlay');
+  let dragging = false, ox=0, oy=0, sx=0, sy=0;
+  function mdown(e){
+    dragging = true;
+    const rect = ov.getBoundingClientRect();
+    sx = e.clientX; sy = e.clientY;
+    ox = rect.left; oy = rect.top;
+    ov.style.transition = 'none';
+  }
+  function mup(){ dragging = false; ov.style.transition=''; }
+  function mmove(e){
+    if(!dragging) return;
+    const dx = e.clientX - sx;
+    const dy = e.clientY - sy;
+    ov.style.left = (ox + dx) + 'px';
+    ov.style.top = (oy + dy) + 'px';
+    ov.style.right = 'auto';
+    ov.style.bottom = 'auto';
+    ov.style.position = 'fixed';
+  }
+  ov.addEventListener('mousedown', mdown);
+  document.addEventListener('mouseup', mup);
+  document.addEventListener('mousemove', mmove);
+})();
+
+/* ---------------------
+   Session on load
+   --------------------- */
+window.addEventListener('load', ()=>{
+  updateUIForAuth();
+  // restore overlay position if previously set (optional)
+  // show a quick welcome if session exists
+  const u = getSession();
+  if(u){ log('Welcome back, '+u+' (session restored)'); }
+});
+</script>
 </body>
 </html>
